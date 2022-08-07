@@ -1,0 +1,75 @@
+Alessandro Pitzalis Test CGM 
+
+●TASK 1: Address validation scenario
+
+Test 1:
+Preconditions:
+- User login executed
+
+Description: My addresses - Error message displayed for fields not filled in
+
+Steps:
+- Open the page "My addresses page"
+- Click on "Add new address"
+- Do not enter any values ​​in any fields
+- Click on the button "Save"
+
+Expected result:
+The website display an error message similar to "The fields State, City, cap, street, Mobile Number are mandatory"
+
+Test 2:
+Preconditions:
+- User login executed
+
+Description: My addresses - Autocomplete "address" values
+
+Steps:
+- Open the page "My addresses page"
+- Click on "Add new address"
+- Insert into the field State and city and enter the first letters of the street
+- Select a suggestion displayed in the modal
+- Insert the House number and mobile number
+- Click on the button "Save"
+
+Expected result:
+Properly modal provides selectable suggestions and correctly saves and displays the new address
+
+Test 3:
+Preconditions:
+- User login executed
+
+Description: My addresses - Absence of suggestions for absence of values ​​in the compilation
+
+Steps:
+- Open the page "My addresses page"
+- Click on "Add new address"
+- Insert into the field State and City correct values
+- Try to select a suggestion
+- Try to save the new address
+
+Expected result:
+The form does not provide suggestions and the user can't save the new address
+
+
+●TASK 1 part 2: The description is not complete there are some missing information, describe them and write a test
+case for 1 of them.
+
+Description
+- To deliver cars to our merchants, they must have at least one valid delivery address in the system.
+- This is the My Addresses page
+- If the section my addresses does not contain saved addresses, the page display immediately the form the form to add a new address
+- If the section my addresses contain one or more saved addresses, the page display every single address and the buttons "Edit Address" and "Delete" for every single address and a button "Add new address" to be able to add a new address
+
+Test:
+Preconditions:
+- User login executed
+- In the section "My addresses" no address is saved
+
+Description: My addresses - No addresses - Display of the form to add address
+
+Steps:
+- Open the page "My addresses page"
+- Click on "Add new address"
+
+Expected result:
+The form for adding addresses is automatically displayed

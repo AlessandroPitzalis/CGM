@@ -1,0 +1,18 @@
+Alessandro Pitzalis Test CGM 
+
+TASK 2
+
+BUG DESCRIPTION: My addresses - No error message displayed after deleting the single address
+
+Precondition:
+-User Login executed
+-The user in the "my addresses" section has only one address
+
+Steps:
+- Open the section My addresses
+- Click the button "delete" on the address
+
+Current behavior:
+The address was deleted without displaying an error message
+
+Expected Result: The page displays an error message "Are you sure you want to delete your unique address? Without addresses it will not be possible to proceed with shipments. Please enter a new address"
