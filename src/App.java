@@ -3,12 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.*;
-import org.openqa.selenium.Keys;
-import java.util.Arrays;
-
-
-
-
+import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -60,8 +55,8 @@ public class App {
             JavascriptExecutor je = (JavascriptExecutor) driver;
             je.executeScript("arguments[0].scrollIntoView(true);",alimentationFilter);
             alimentationFilter.click();
-            Thread.sleep(2000);
-            WebElement diesel = driver.findElement(By.cssSelector("body > div:nth-child(12) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(6) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2) > div:nth-child(3)"));
+            Thread.sleep(3000);
+            WebElement diesel = driver.findElement(By.xpath("(//div[@class='label___2_rNo input-box__label'][normalize-space()='Diesel'])[2]"));
             diesel.click();
         }
         driver.navigate().refresh();
@@ -75,7 +70,6 @@ public class App {
         String fuel = driver.findElement(By.cssSelector("div[data-qa-selector='side-menu-fuelTypeFilter'] div[class='itemRightLabel___RghBH']")).getText();
 
         if(brand.equals("Mercedes-Benz") && startPrice.equals("25.000 € - 30.000 €") && immatricolazione.equals("Da 2019") && fuel.equals("Diesel") ) {
-        //User defined message on console
         System.out.println("Value match as Expected");
         }
         else{
@@ -85,16 +79,29 @@ public class App {
 
         //verify the year of cars
         
-        String number = driver.findElement(By.cssSelector(".carsCounter___2KKEu.carsCounter___3zFvA")).getText();
-        int first =number.charAt(0);
+        WebElement number = driver.findElement(By.cssSelector(".carsCounter___2KKEu.carsCounter___3zFvA"));
+        String a = number.getText();
+        Thread.sleep(500);
+        char numero =a.charAt(0);
+        int intNumero = Character.getNumericValue(numero); 
+        System.out.println(intNumero);
 
-        for(int x=0 ; x<=first; x++){
-        JavascriptExecutor je = (JavascriptExecutor) driver;
-        WebElement year = driver.findElement(By.xpath("(//li[@data-qa-selector='spec-year'])["+x+"]"));
-        je.executeScript("arguments[0].scrollIntoView(true);",year);
-        year.getText();
-        System.out.println(year);
-            } 
+        for(int x=0 ; x<=intNumero-1; x++){
+        String year = driver.findElement(By.xpath("(//li[@data-qa-selector='spec-year'])")).getText();
+        int intYear = Integer.parseInt(year);
+        int anno =2019;
+       if (intYear<=anno) {
+        System.out.println("Anno Correttamente minore di "+intYear);
+       } else {
+        System.out.println("Anno erratto minore di "+intYear);
+        driver.quit();         
+       }
+
+       }
+        //Count the results
+       List <WebElement> elements = driver.findElements(By.className("data-qa-selector=`logo-link`"));
+       System.out.println("Number of elements:" +elements + elements.size());
+       //input[
 
 
 
